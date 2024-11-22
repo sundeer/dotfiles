@@ -37,9 +37,12 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'python' \
+  'node' \
   'completion' \
+  'syntax-highlighting' \
   'history-substring-search' \
-  'python'
+  'autosuggestions'
   # 'prompt'
 
 #
