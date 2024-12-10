@@ -55,6 +55,9 @@ path=(
   # because this is an alternate version of another formula
   /opt/homebrew/opt/postgresql@15/bin
 
+  # Pipx
+  $HOME/.local/bin
+
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
