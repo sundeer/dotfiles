@@ -1,8 +1,6 @@
 tap "buo/cask-upgrade"
 tap "ebullient/tap"
 tap "homebrew/bundle"
-brew "ansible"
-brew "ansible-lint"
 brew "brotli"
 brew "chezmoi"
 brew "direnv"
