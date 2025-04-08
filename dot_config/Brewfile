@@ -1,6 +1,5 @@
 tap "buo/cask-upgrade"
 tap "ebullient/tap"
-tap "homebrew/bundle"
 brew "brotli"
 brew "chezmoi"
 brew "direnv"
