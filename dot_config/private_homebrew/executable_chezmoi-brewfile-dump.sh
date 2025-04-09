@@ -40,15 +40,7 @@ else
     exitOnError "Failed to commit changes."
 fi
 
-# Step 4: Apply the changes using chezmoi
-Log "Applying changes using chezmoi..."
-if chezmoi apply; then
-    Log "Changes applied successfully."
-else
-    exitOnError "Failed to apply changes with chezmoi."
-fi
-
-# Step 5: Push the changes to the remote repository
+# Step 4: Push the changes to the remote repository
 Log "Pushing changes to remote repository..."
 if chezmoi git push; then
     Log "Changes pushed successfully."
@@ -56,7 +48,7 @@ else
     exitOnError "Failed to push changes with chezmoi git."
 fi
 
-# Step 6: Apply the changes to the target directory
+# Step 5: Apply the changes to the target directory
 Log "Applying changes to target directory..."
 if chezmoi apply; then
     Log "Changes applied successfully."
