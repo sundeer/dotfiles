@@ -19,41 +19,41 @@ exitOnError() {
 echo "" >&2
 Log "Starting ChezMoi Brewfile dump and apply process"
 
-# Dump Brewfile using brew bundle dump
+# Dump Brewfile using brew bundle dump (swallow stdout)
 Log "Dumping Brewfile..."
-if brew bundle dump --force --file="${HOME}/.local/share/chezmoi/dot_config/Brewfile"; then
+if brew bundle dump --force --file="${HOME}/.local/share/chezmoi/dot_config/Brewfile" > /dev/null; then
     Log "Brewfile dumped successfully."
 else
     exitOnError "Failed to dump Brewfile."
 fi
 
-# Stage the Brewfile changes with chezmoi
+# Stage the Brewfile changes with chezmoi (swallow stdout)
 Log "Adding Brewfile to chezmoi git..."
-if chezmoi git add ./dot_config/Brewfile; then
+if chezmoi git add ./dot_config/Brewfile > /dev/null; then
     Log "Brewfile added successfully."
 else
     exitOnError "Failed to add Brewfile with chezmoi git."
 fi
 
-# Commit the changes
+# Commit the changes (swallow stdout)
 Log "Committing changes..."
-if chezmoi git -- commit -m "Modified: Brewfile"; then
+if chezmoi git -- commit -m "Modified: Brewfile" > /dev/null; then
     Log "Changes committed successfully."
 else
     exitOnError "Failed to commit changes."
 fi
 
-# Push the changes to the remote repository
+# Push the changes to the remote repository (swallow stdout)
 Log "Pushing changes to remote repository..."
-if chezmoi git push; then
+if chezmoi git push > /dev/null; then
     Log "Changes pushed successfully."
 else
     exitOnError "Failed to push changes with chezmoi git."
 fi
 
-# Apply the changes to the target directory
+# Apply the changes to the target directory (swallow stdout)
 Log "Applying changes to target directory..."
-if chezmoi apply; then
+if chezmoi apply > /dev/null; then
     Log "Changes applied successfully."
 else
     exitOnError "Failed to apply changes to target."
