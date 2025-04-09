@@ -8,7 +8,7 @@
             <key>HOME</key>
             <string>/Users/rs</string>
             <key>PATH</key>
-            <string>/opt/homebrew/bin:$PATH</string>
+            <string>/opt/homebrew/bin:/bin:/usr/bin:/usr/local/bin</string>
         </dict>
 
         <key>Label</key>
