@@ -9,7 +9,7 @@ timestamp() {
 
 # Step 1: Dump Brewfile using brew bundle dump
 echo "$(timestamp) Dumping Brewfile..."
-if brew bundle dump --force --file="/Users/rs/.local/share/chezmoi/dot_config/Brewfile"; then
+if /opt/homebrew/bin/brew bundle dump --force --file="/Users/rs/.local/share/chezmoi/dot_config/Brewfile"; then
     echo "$(timestamp) Brewfile dumped successfully."
 else
     echo "$(timestamp) Error: Failed to dump Brewfile." >&2
