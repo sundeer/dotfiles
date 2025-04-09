@@ -27,9 +27,6 @@
         </dict>
 
         <key>StandardErrorPath</key>
-        <string>/Users/rs/.local/share/homebrew/chezmoi-brewfile-stderr.log</string>
-
-        <key>StandardOutPath</key>
-        <string>/Users/rs/.local/share/homebrew/chezmoi-brewfile-stdout.log</string>
+        <string>/Users/rs/.local/share/homebrew/chezmoi-brewfile.log</string>
     </dict>
 </plist>
