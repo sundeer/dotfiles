@@ -9,7 +9,7 @@ Log() {
 }
 
 exitOnError() {
-    echo "$(timestamp) ERROR: $1" >&1
+    echo "[$(timestamp)] ERROR: $1" >&1
     exit 1
 }
 
