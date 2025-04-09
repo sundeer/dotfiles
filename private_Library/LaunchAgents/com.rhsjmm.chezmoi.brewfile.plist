@@ -6,7 +6,7 @@
         <string>com.rhsjmm.chezmoi.brewfile</string>
 
         <key>Program</key>
-        <string>/User/rs/.config/homebrew/chezmoi-brewfile.dump.sh</string>
+        <string>/Users/rs/.config/homebrew/chezmoi-brewfile.dump.sh</string>
 
         <key>StartCalendarInterval</key>
             <dict>
