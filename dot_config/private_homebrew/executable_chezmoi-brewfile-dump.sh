@@ -5,11 +5,11 @@ timestamp() {
 }
 
 Log() {
-    echo "[$(timestamp)] LOG: $1" >&1
+    echo "[$(timestamp)] LOG: $1" >&2
 }
 
 exitOnError() {
-    echo "[$(timestamp)] ERROR: $1" >&1
+    echo "[$(timestamp)] ERROR: $1" >&2
     exit 1
 }
 
