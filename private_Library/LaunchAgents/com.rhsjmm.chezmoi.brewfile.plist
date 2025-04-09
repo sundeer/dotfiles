@@ -9,12 +9,17 @@
         <string>/Users/rs/.config/homebrew/chezmoi-brewfile-dump.sh</string>
 
         <key>StartCalendarInterval</key>
-            <dict>
-                <key>Hour</key>
-                <integer>02</integer>
+        <dict>
+            <key>Hour</key>
+            <integer>02</integer>
 
-                <key>Minute</key>
-                <integer>0</integer>
-            </dict>
+            <key>Minute</key>
+            <integer>0</integer>
+        </dict>
+
+        <key>StandardErrorPath</key>
+        <string>/Users/rs/.local/share/homebrew/chezmoi-brewfile-stderr.log</string>
+        <key>StandardOutPath</key>
+        <string>/Users/rs/.local/homebrew/share/chezmoi-brewfile-stdout.log</string>
     </dict>
 </plist>
