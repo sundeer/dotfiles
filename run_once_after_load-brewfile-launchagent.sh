@@ -24,8 +24,7 @@ else
 fi
 
 Log "Installing Homebrew dependencies..."
-echo $HOME
-if /opt/homebrew/bin/brew bundle --file="$HOME/.local/share/chezmoi/Brewfile"; then
+if /opt/homebrew/bin/brew bundle --file="$HOME/.local/share/chezmoi/homebrew/Brewfile"; then
     Log "Homebrew dependencies installed successfully."
 else
     exitOnError "Failed to install Homebrew dependencies from Brewfile."
