@@ -4,6 +4,7 @@
 	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7MtW9QxtXWp8tCnrKtY9lcAHTLZibCILapGWZrON4k SSH Key - Github
 [commit]
 	gpgsign = false
+	program = /opt/homebrew/bin/gpg
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [gpg]
