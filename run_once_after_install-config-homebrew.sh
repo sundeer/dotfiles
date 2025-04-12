@@ -23,14 +23,15 @@ exitOnError() {
 # Install Homebrew Section
 # ------------------------
 Log "Installing Homebrew..."
-if brew >/dev/null 2>&1; then
+# Check if brew is available using command -v instead of executing brew.
+if command -v brew; then
     Log "Homebrew is already installed."
 else
-    if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
-        Log "Homebrew installed successfully."
-    else
+    # Use an inverted condition so that a failure triggers exitOnError.
+    if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
         exitOnError "Failed to install Homebrew."
     fi
+    Log "Homebrew installed successfully."
 fi
 
 # -------------------------------------
@@ -59,9 +60,11 @@ fi
 # Load Homebrew Launchd Job Section
 # -------------------------------
 Log "Loading Homebrew launchd job..."
+# Check if the launchd job is already loaded.
 if launchctl list | grep -q "com.rhsjmm.chezmoi.brewfile"; then
     Log "Launchd job already loaded."
 else
+    # Load the launchd job if not already loaded.
     if launchctl load ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist; then
         Log "Launchd job loaded successfully."
     else
