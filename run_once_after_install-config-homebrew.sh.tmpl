@@ -43,7 +43,7 @@ fi
 if [[ {{ .chezmoi.arch }} == "arm64" ]]; then
   Log "You're on Apple Silicon (ARM)"
   HOMEBREW_PATH="/opt/homebrew"
-elif [[ {{ .chezmoi.arch }} == "x86_64" ]]; then
+elif [[ {{ .chezmoi.arch }} == "amd64" ]]; then
   Log "You're on Intel"
   HOMEBREW_PATH="/usr/local"
 else
