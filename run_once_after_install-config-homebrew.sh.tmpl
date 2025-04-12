@@ -40,10 +40,10 @@ fi
 # Install Homebrew Dependencies Section
 # -------------------------------------
 
-if [[ {{ .chezmoi.arch_name }} == "arm64" ]]; then
+if [[ {{ .chezmoi.arch }} == "arm64" ]]; then
   Log "You're on Apple Silicon (ARM)"
   HOMEBREW_PATH="/opt/homebrew"
-elif [[ {{ .chezmoi.arch_name }} == "x86_64" ]]; then
+elif [[ {{ .chezmoi.arch }} == "x86_64" ]]; then
   Log "You're on Intel"
   HOMEBREW_PATH="/usr/local"
 else
