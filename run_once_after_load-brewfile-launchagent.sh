@@ -23,7 +23,7 @@ else
     exitOnError "Failed to load launchd job: ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist"
 fi
 
-Log("echoing environment variables...")
+Log "echoing environment variables..."
 ENV=$(env)
 if [ -z "$ENV" ]; then
     exitOnError "Failed to retrieve environment variables."
