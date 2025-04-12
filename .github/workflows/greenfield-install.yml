@@ -2,7 +2,7 @@ name: Greenfield Install
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
-  Greenfield:
+  Greenfield_Install:
     runs-on: macos-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
