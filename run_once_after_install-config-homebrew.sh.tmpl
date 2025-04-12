@@ -47,7 +47,7 @@ elif [[ {{ .chezmoi.arch }} == "x86_64" ]]; then
   Log "You're on Intel"
   HOMEBREW_PATH="/usr/local"
 else
-  exitOnError "Unknown architecture: {{ .chezmoi.arch_name }}"
+  exitOnError "Unknown architecture"
 fi
 
 Log "Checking for Homebrew dependencies..."
