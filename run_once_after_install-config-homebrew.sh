@@ -50,7 +50,7 @@ fi
 Log "Loading Homebrew launchd job..."
 Log "Checking for existing launchd job..."
 ls -la ~/Library/LaunchAgents
-launchctl list | grep -q "com.rhsjmm.chezmoi.brewfile"
+launchctl list 
 
 if launchctl list | grep -q "com.rhsjmm.chezmoi.brewfile"; then
     Log "Launchd job plist file found."
