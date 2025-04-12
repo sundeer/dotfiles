@@ -47,21 +47,18 @@ else
 fi
 
 # Load Homebrew launchd job
+Log "Loading Homebrew launchd job..."
 Log "Checking for existing launchd job..."
 if launchctl list | grep -q "com.rhsjmm.chezmoi.brewfile"; then
-    Log "Launchd job already exists."
-else
-    Log "Creating launchd job..."
-    if cp ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist ~/Library/LaunchAgents/; then
-        Log "Launchd job created successfully."
+    Log "Launchd job plist file found."
+
+    Log "Loading launchd job..."
+    if launchctl load ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist; then
+        Log "Launchd job loaded successfully."
     else
-        exitOnError "Failed to copy launchd job plist file."
-    fi
+        exitOnError "Failed to load launchd job: ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist"
+fi
+else
+    exitOnError "Launchd job plist file not found."
 fi
 
-Log "Loading launchd job..."
-if launchctl load ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist; then
-    Log "Launchd job loaded successfully."
-else
-    exitOnError "Failed to load launchd job: ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist"
-fi
