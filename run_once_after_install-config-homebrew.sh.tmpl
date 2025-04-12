@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 # Redirect all stdout to stderr
 exec 1>&2
 
@@ -37,11 +39,22 @@ fi
 # -------------------------------------
 # Install Homebrew Dependencies Section
 # -------------------------------------
+
+if [[ {{ .chezmoi.arch_name }} == "arm64" ]]; then
+  Log "You're on Apple Silicon (ARM)"
+  HOMEBREW_PATH="/opt/homebrew"
+elif [[ {{ .chezmoi.arch_name }} == "x86_64" ]]; then
+  Log "You're on Intel"
+  HOMEBREW_PATH="/usr/local"
+else
+  exitOnError "Unknown architecture: {{ .chezmoi.arch_name }}"
+fi
+
 Log "Checking for Homebrew dependencies..."
 if [ "$CI" = "true" ]; then
     # In CI mode, do not install packages, just list dependencies.
     Log "CI environment detected, listing Homebrew dependencies..."
-    if /opt/homebrew/bin/brew bundle list --file="$HOME/.config/homebrew/Brewfile"; then
+    if $HOMEBREW_PATH/bin/brew bundle list --file="$HOME/.config/homebrew/Brewfile"; then
         Log "Brew bundle list executed successfully in CI environment."
     else
         exitOnError "Failed to list Homebrew dependencies from Brewfile in CI environment."
@@ -49,7 +62,7 @@ if [ "$CI" = "true" ]; then
 else
     # In non-CI, install the dependencies.
     Log "Installing Homebrew dependencies..."
-    if /opt/homebrew/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
+    if $HOMEBREW_PATH/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
         Log "Homebrew dependencies installed successfully."
     else
         exitOnError "Failed to install Homebrew dependencies from Brewfile."
