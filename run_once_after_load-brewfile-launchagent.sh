@@ -23,11 +23,10 @@ else
     exitOnError "Failed to load launchd job: ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist"
 fi
 
-Log "echoing environment variables..."
-ENV=$(env)
-if [ -z "$ENV" ]; then
-    exitOnError "Failed to retrieve environment variables."
-fi
+Log "Logging current environment variables:"
+while IFS= read -r line; do
+    Log "$line"
+done < <(env)
 
 # Log "Installing Homebrew dependencies..."
 # if /opt/homebrew/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
