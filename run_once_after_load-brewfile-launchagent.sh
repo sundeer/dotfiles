@@ -29,7 +29,6 @@ fi
 # ----------------------------------
 # Homebrew operations
 # ----------------------------------
-# Check if we're running in a continuous integration (CI) environment.
 if [ "$CI" = "true" ]; then
     # In CI mode, do not install packages, just list Homebrew dependencies.
     Log "CI environment detected, listing Homebrew dependencies..."
