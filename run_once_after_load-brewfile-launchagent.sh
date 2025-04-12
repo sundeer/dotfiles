@@ -1,5 +1,4 @@
 #!/bin/bash
-# filepath: /Users/rs/.local/share/chezmoi/run_once_after_load-brewfile-launchagent.sh
 
 exec 1>&2
 
