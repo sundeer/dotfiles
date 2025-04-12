@@ -23,9 +23,11 @@ else
     exitOnError "Failed to load launchd job: ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist"
 fi
 
-Log "Installing Homebrew dependencies..."
-if /opt/homebrew/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
-    Log "Homebrew dependencies installed successfully."
-else
-    exitOnError "Failed to install Homebrew dependencies from Brewfile."
-fi
+echo $ENV
+
+# Log "Installing Homebrew dependencies..."
+# if /opt/homebrew/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
+#     Log "Homebrew dependencies installed successfully."
+# else
+#     exitOnError "Failed to install Homebrew dependencies from Brewfile."
+# fi
