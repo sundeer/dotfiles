@@ -16,6 +16,9 @@ exitOnError() {
     exit 1
 }
 
+# ---------------------------
+# Launchd job loading
+# ---------------------------
 Log "Loading launchd job..."
 if launchctl load ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist; then
     Log "Launchd job loaded successfully."
@@ -23,14 +26,24 @@ else
     exitOnError "Failed to load launchd job: ~/Library/LaunchAgents/com.rhsjmm.chezmoi.brewfile.plist"
 fi
 
-Log "Logging current environment variables:"
-while IFS= read -r line; do
-    Log "$line"
-done < <(env)
-
-# Log "Installing Homebrew dependencies..."
-# if /opt/homebrew/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
-#     Log "Homebrew dependencies installed successfully."
-# else
-#     exitOnError "Failed to install Homebrew dependencies from Brewfile."
-# fi
+# ----------------------------------
+# Homebrew operations
+# ----------------------------------
+# Check if we're running in a continuous integration (CI) environment.
+if [ "$CI" = "true" ]; then
+    # In CI mode, do not install packages, just list Homebrew dependencies.
+    Log "CI environment detected, listing Homebrew dependencies..."
+    if /opt/homebrew/bin/brew bundle list --file="$HOME/.config/homebrew/Brewfile"; then
+        Log "Brew bundle list executed successfully in CI environment."
+    else
+        exitOnError "Failed to list Homebrew dependencies from Brewfile in CI environment."
+    fi
+else
+    # In a non-CI environment, install Homebrew dependencies.
+    Log "Installing Homebrew dependencies..."
+    if /opt/homebrew/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
+        Log "Homebrew dependencies installed successfully."
+    else
+        exitOnError "Failed to install Homebrew dependencies from Brewfile."
+    fi
+fi
