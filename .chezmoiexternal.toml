@@ -1,5 +1,5 @@
 [".config/zsh/.zprezto"]
     type = "git-repo"
     url = "https://github.com/sorin-ionescu/prezto.git"
-    [".config/zsh/.zprezto".pull]
+    [".config/zsh/.zprezto".clone]
         args = ["--recursive"]
