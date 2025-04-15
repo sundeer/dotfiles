@@ -12,7 +12,6 @@ fi
 
 # Customize to your needs...
 
-
 ### Starship promt
 eval "$(starship init zsh)"
 
