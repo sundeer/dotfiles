@@ -58,11 +58,11 @@ path=(
   # Pipx
   $HOME/.local/bin
 
-  # Homebrew
-  /opt/{homebrew,local}/{,s}bin(N)
-
   # Volta
   $VOLTA_HOME/bin
+
+  # Homebrew
+  /opt/{homebrew,local}/{,s}bin(N)
 
   /usr/local/{,s}bin(N)
   $path
