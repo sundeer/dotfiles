@@ -21,6 +21,3 @@ eval "$(zoxide init zsh)"
 
 ### Direnv
 eval "$(direnv hook zsh)"
-
-### Set homebrew Brewfile location
-[[ -d $XDG_CONFIG_HOME ]] && export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"

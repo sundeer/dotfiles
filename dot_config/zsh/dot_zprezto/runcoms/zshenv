@@ -21,3 +21,6 @@ fi
 
 # Set volta data dir
 [[ -d $XDG_DATA_HOME ]] && export VOLTA_HOME="$XDG_DATA_HOME/volta"
+
+# Set homebrew Brewfile location
+[[ -d $XDG_CONFIG_HOME ]] && export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/Brewfile"
