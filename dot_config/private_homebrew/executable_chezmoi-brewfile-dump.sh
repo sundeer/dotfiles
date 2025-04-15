@@ -29,8 +29,8 @@ fi
 
 # Check the status of the chezmoi git repository
 Log "Checking chezmoi git status..."
-GIT_STATUS=$(chezmoi git status)
-if [ -n "$GIT_STATUS" ]; then
+GIT_STATUS=$(chezmoi git status -- --porcelain)
+if [[ -n "$GIT_STATUS" ]]; then
     Log "Uncommitted changes detected in chezmoi git status."
     
     # Stage the Brewfile changes with chezmoi 
