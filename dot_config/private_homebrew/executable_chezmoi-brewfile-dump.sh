@@ -27,28 +27,38 @@ else
     exitOnError "Failed to dump Brewfile."
 fi
 
-# Stage the Brewfile changes with chezmoi 
-Log "Adding Brewfile to chezmoi git..."
-if chezmoi git add ./dot_config/private_homebrew/Brewfile; then
-    Log "Brewfile added successfully."
-else
-    exitOnError "Failed to add Brewfile with chezmoi git."
-fi
+# Check the status of the chezmoi git repository
+Log "Checking chezmoi git status..."
+GIT_STATUS=$(chezmoi git status --porcelain)
+if [ -n "$GIT_STATUS" ]; then
+    Log "Uncommitted changes detected in chezmoi git status."
+    
+    # Stage the Brewfile changes with chezmoi 
+    Log "Adding Brewfile to chezmoi git..."
+    if chezmoi git add ./dot_config/private_homebrew/Brewfile; then
+        Log "Brewfile added successfully."
+    else
+        exitOnError "Failed to add Brewfile with chezmoi git."
+    fi
 
-# Commit the changes 
-Log "Committing changes..."
-if chezmoi git -- commit -m "Modified: Brewfile"; then
-    Log "Changes committed successfully."
-else
-    exitOnError "Failed to commit changes."
-fi
+    # Commit the changes 
+    Log "Committing changes..."
+    if chezmoi git -- commit -m "Modified: Brewfile"; then
+        Log "Changes committed successfully."
+    else
+        exitOnError "Failed to commit changes."
+    fi
 
-# Push the changes to the remote repository 
-Log "Pushing changes to remote repository..."
-if chezmoi git push; then
-    Log "Changes pushed successfully."
+    # Push the changes to the remote repository 
+    Log "Pushing changes to remote repository..."
+    if chezmoi git push; then
+        Log "Changes pushed successfully."
+    else
+        exitOnError "Failed to push changes with chezmoi git."
+    fi
 else
-    exitOnError "Failed to push changes with chezmoi git."
+    Log "No changes detected in chezmoi git status."
+    Log "Skipping git add, commit, and push."
 fi
 
 # Apply the changes to the target directory 
