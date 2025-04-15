@@ -21,7 +21,7 @@ Log "Starting ChezMoi Brewfile dump and apply process"
 
 # Dump Brewfile using brew bundle dump
 Log "Dumping Brewfile..."
-if brew bundle dump --force --file="${HOME}/.local/share/chezmoi/dot_config/homebrew/Brewfile"; then
+if brew bundle dump --no-vscode --force --file="${HOME}/.local/share/chezmoi/dot_config/homebrew/Brewfile"; then
     Log "Brewfile dumped successfully."
 else
     exitOnError "Failed to dump Brewfile."

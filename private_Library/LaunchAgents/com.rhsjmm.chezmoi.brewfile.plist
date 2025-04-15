@@ -9,8 +9,6 @@
             <string>/Users/rs</string>
             <key>PATH</key>
             <string>/opt/homebrew/bin:/bin:/usr/bin:/usr/local/bin</string>
-            <key>HOMEBREW_BUNDLE_DUMP_NO_VSCODE</key>
-            <string>true</string>
         </dict>
 
         <key>Label</key>
