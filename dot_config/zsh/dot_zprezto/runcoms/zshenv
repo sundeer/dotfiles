@@ -10,14 +10,18 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-# Set pyenv root dir
+### pyenv
 [[ -d $XDG_DATA_HOME/pyenv ]] && export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 
-# Set zoxide data dir
+### zoxide
 [[ -d $XDG_DATA_HOME ]] && export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
 
-# Set volta data dir
+### volta
 [[ -d $XDG_DATA_HOME ]] && export VOLTA_HOME="$XDG_DATA_HOME/volta"
 
-# Set homebrew Brewfile location
+### homebrew
+# Set Brewfile location.
 [[ -d $XDG_CONFIG_HOME ]] && export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
+
+# Disable VSCode integration.
+export $HOMEBREW_BUNDLE_DUMP_NO_VSCODE=true
