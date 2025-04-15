@@ -1,3 +1,4 @@
+
 [".config/zsh/.zprezto"]
     type = "git-repo"
     url = "https://github.com/sorin-ionescu/prezto.git"
