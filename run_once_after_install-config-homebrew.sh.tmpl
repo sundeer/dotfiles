@@ -64,7 +64,7 @@ else
     if $HOMEBREW_PATH/bin/brew bundle --file="$HOME/.config/homebrew/Brewfile"; then
         Log "Homebrew dependencies installed successfully."
     else
-        exitOnError "Failed to install Homebrew dependencies from Brewfile."
+        Log "Failed to install Homebrew dependencies from Brewfile."
     fi
 fi
 
