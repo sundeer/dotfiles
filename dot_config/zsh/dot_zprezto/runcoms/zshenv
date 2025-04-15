@@ -24,4 +24,4 @@ fi
 [[ -d $XDG_CONFIG_HOME ]] && export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 
 # Disable VSCode integration.
-export $HOMEBREW_BUNDLE_DUMP_NO_VSCODE=true
+export $HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
