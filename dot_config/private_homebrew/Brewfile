@@ -8,6 +8,7 @@ brew "ffmpeg"
 brew "git"
 brew "gnupg"
 brew "mas"
+brew "nvm"
 brew "openjdk"
 brew "pipx"
 brew "postgresql@15"
@@ -30,7 +31,6 @@ cask "betterdisplay"
 cask "brave-browser"
 cask "bunch"
 cask "cardhop"
-cask "chatgpt"
 cask "cirrus"
 cask "daisydisk"
 cask "dash@6"
@@ -62,7 +62,6 @@ cask "kaleidoscope@2"
 cask "karabiner-elements"
 cask "kitty"
 cask "launchcontrol"
-cask "lm-studio"
 cask "macwhisper"
 cask "microsoft-auto-update"
 cask "moom"
@@ -90,6 +89,7 @@ cask "wireshark"
 mas "Dipper", id: 6450242673
 mas "Discovery", id: 1381004916
 mas "Drafts", id: 1435957248
+mas "GarageBand", id: 682658836
 mas "Kindle", id: 302584613
 mas "PokerCruncher", id: 422498721
 mas "WireGuard", id: 1451685025
