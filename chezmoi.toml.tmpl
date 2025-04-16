@@ -1,3 +1,6 @@
+{{ $computerName := promptStringOnce . "computerName" "Enter your computer name (e.g., rs-mac)" -}}
+{{ $domainName := promptStringOnce . "domainName" "Enter your domain name (e.g., rhsjmm.com)" -}}
+
 [edit]
     command = "code"
     args = ["--wait"]
@@ -7,5 +10,5 @@
     autoPush = true
 
 [data]
-    computerName = '{{ prompt "Enter your computer name (e.g., rs-mac)" }}'
-    domainName =  '{{ prompt "Enter your domain name (e.g., rhsjmm.com)" }}'
+    computerName = {{ $computerName | quote }}
+    domainName = {{ $domainName | quote }}
