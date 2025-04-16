@@ -1,0 +1,11 @@
+[edit]
+    command = "code"
+    args = ["--wait"]
+
+[git]
+    autoCommit = true
+    autoPush = true
+
+[data]
+    computerName = '{{ prompt "Enter your computer name (e.g., rs-mac)" }}'
+    domainName =  '{{ prompt "Enter your domain name (e.g., rhsjmm.com)" }}'
