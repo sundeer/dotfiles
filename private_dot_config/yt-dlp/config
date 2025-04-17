@@ -1,0 +1,8 @@
+# Always extract audio
+-x
+
+# Save in iCloud Drive
+-o "/Users/rs/Downloads/youtube/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
+
+# Audio format
+-f mp4
