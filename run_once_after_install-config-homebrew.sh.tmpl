@@ -1,8 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 
 # Redirect all stdout to stderr
 exec 1>&2
+
+# Cleanup on script exit (success or crash)
+cleanup() {
+  if [[ -n "${KEEP_ALIVE_PID-}" ]]; then
+    kill "$KEEP_ALIVE_PID" 2>/dev/null || true
+  fi
+  if [[ -n "${ASKPASS_SCRIPT-}" ]]; then
+    rm -f "$ASKPASS_SCRIPT"
+  fi
+  unset SUDO_ASKPASS HOMEBREW_SUDO_PASSWORD || true
+}
+trap cleanup EXIT INT TERM
 
 # Function to generate a timestamp for logs.
 timestamp() {
@@ -20,8 +33,40 @@ exitOnError() {
     exit 1
 }
 
+
 # ------------------------
-# Install Homebrew Section
+# Sudo Password Handling
+# ------------------------
+# Prompt once for your sudo password via a GUI dialog:
+HOMEBREW_SUDO_PASSWORD=$(
+  osascript \
+    -e 'Tell application "System Events" to display dialog "Enter your sudo password for Homebrew operations:" default answer "" with hidden answer buttons {"OK"} default button "OK"' \
+    -e 'text returned of result'
+)
+
+# Create a secure, temporary askpass helper that echoes that password:
+ASKPASS_SCRIPT="$(mktemp)"
+chmod 700 "$ASKPASS_SCRIPT"
+cat <<EOF > "$ASKPASS_SCRIPT"
+#!/usr/bin/env bash
+# Askpass helper: echo the stored password (no further prompts)
+printf "%s\n" "$HOMEBREW_SUDO_PASSWORD"
+EOF
+
+# Tell sudo to use our helper
+export SUDO_ASKPASS="$ASKPASS_SCRIPT"
+
+# Prime sudo (use -A to force askpass) so you get the GUI dialog only once
+sudo -A -v
+
+# Keep the credential alive until this script exits
+{ while true; do sudo -n true; sleep 60; done } 2>/dev/null &
+KEEP_ALIVE_PID=$!
+
+
+
+# ------------------------
+# Install Homebrew
 # ------------------------
 Log "Installing Homebrew..."
 # Check if brew is available using command -v instead of executing brew.
@@ -35,8 +80,9 @@ else
     Log "Homebrew installed successfully."
 fi
 
+
 # -------------------------------------
-# Install Homebrew Dependencies Section
+# Install Homebrew Dependencies
 # -------------------------------------
 
 if [[ {{ .chezmoi.arch }} == "arm64" ]]; then
@@ -68,8 +114,9 @@ else
     fi
 fi
 
+
 # -------------------------------
-# Load Homebrew Launchd Job Section
+# Load Homebrew Launchd Job
 # -------------------------------
 Log "Loading Homebrew launchd job..."
 # Check if the launchd job is already loaded.
@@ -84,3 +131,5 @@ else
     fi
 fi
 
+
+cleanup()
