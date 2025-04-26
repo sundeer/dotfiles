@@ -38,6 +38,8 @@ exitOnError() {
 # Sudo Password Handling
 # ------------------------
 # Prompt once for your sudo password via a GUI dialog:
+Log "Get sudo password and keep alive..."
+
 HOMEBREW_SUDO_PASSWORD=$(
   osascript \
     -e 'Tell application "System Events" to display dialog "Enter your sudo password for Homebrew operations:" default answer "" with hidden answer buttons {"OK"} default button "OK"' \
@@ -69,6 +71,7 @@ KEEP_ALIVE_PID=$!
 # Install Homebrew
 # ------------------------
 Log "Installing Homebrew..."
+
 # Check if brew is available using command -v instead of executing brew.
 if command -v brew; then
     Log "Homebrew is already installed."
@@ -84,6 +87,7 @@ fi
 # -------------------------------------
 # Install Homebrew Dependencies
 # -------------------------------------
+Log "Installing Homebrew dependencies..."
 
 if [[ {{ .chezmoi.arch }} == "arm64" ]]; then
   Log "You're on Apple Silicon (ARM)"
@@ -95,7 +99,6 @@ else
   exitOnError "Unknown architecture"
 fi
 
-Log "Checking for Homebrew dependencies..."
 if [ "$CI" = "true" ]; then
     # In CI mode, do not install packages, just list dependencies.
     Log "CI environment detected, listing Homebrew dependencies..."
@@ -119,6 +122,7 @@ fi
 # Load Homebrew Launchd Job
 # -------------------------------
 Log "Loading Homebrew launchd job..."
+
 # Check if the launchd job is already loaded.
 if launchctl list | grep -q "com.rhsjmm.chezmoi.brewfile"; then
     Log "Launchd job already loaded."
