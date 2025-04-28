@@ -132,6 +132,17 @@ defaults write com.apple.ActivityMonitor "IconType" -int "5"
 killall Activity\ Monitor
 
 
+# === ControlCenter Settings ===
+echo "Configuring Control Center settings..."
+
+# Show Bluetooth in menu bar
+defaults write com.apple.controlcenter Sound -int 18
+
+# Show Sound in menu bar
+defaults write com.apple.controlcenter Bluetooth -int 18
+
+killall ControlCenter
+
 # === Trackpad Settings ===
 echo "Configuring Trackpad settings..."
 
