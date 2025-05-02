@@ -143,6 +143,7 @@ defaults write com.apple.controlcenter Bluetooth -int 18
 
 killall ControlCenter
 
+
 # === Trackpad Settings ===
 echo "Configuring Trackpad settings..."
 
