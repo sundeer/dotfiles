@@ -312,6 +312,10 @@
 	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>NeverWarnAboutShortLivedSessions_30FB0E1E-D12E-4215-958D-4DF8F90947DE</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_30FB0E1E-D12E-4215-958D-4DF8F90947DE_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1116,7 +1120,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
