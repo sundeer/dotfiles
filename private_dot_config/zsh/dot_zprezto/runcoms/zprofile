@@ -51,9 +51,14 @@ typeset -gU cdpath fpath mailpath path
 path=(
   $HOME/{,s}bin(N)
 
-  # From Homebrew: postgresql@15 is keg-only, which means it was not symlinked into /opt/homebrew,
+  # Homebrew: postgresql@15 is keg-only, which means it was not symlinked into /opt/homebrew,
   # because this is an alternate version of another formula
   /opt/homebrew/opt/postgresql@15/bin
+
+  # Homebrew: openjdk is keg-only, which means it was not symlinked into /opt/homebrew,
+  # because macOS provides similar software and installing this software in
+  # parallel can cause all kinds of trouble.
+  /opt/homebrew/opt/openjdk/bin
 
   # Pipx
   $HOME/.local/bin
