@@ -4,5 +4,4 @@
 # Save in iCloud Drive
 -o "/Users/rs/Downloads/youtube/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"
 
-# Audio format
--f mp4
+-f "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4] / bv*+ba/b"
