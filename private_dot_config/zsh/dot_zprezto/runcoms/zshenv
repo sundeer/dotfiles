@@ -26,3 +26,7 @@ fi
 # Disable VSCode integration.
 export HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
 
+### Anthropic
+# Claude.ai long lived OAuth token for claude code cli running in container
+export CLAUDE_CODE_OAUTH_TOKEN=$(security find-generic-password -s 'Claude Code-OAuth token' -w)
+
