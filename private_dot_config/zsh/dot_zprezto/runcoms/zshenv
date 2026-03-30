@@ -25,3 +25,4 @@ fi
 
 # Disable VSCode integration.
 export HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
+
