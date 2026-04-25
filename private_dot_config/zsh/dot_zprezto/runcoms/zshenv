@@ -31,7 +31,7 @@ export HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
 # export CLAUDE_CODE_OAUTH_TOKEN=$(security find-generic-password -s 'Claude Code-credentials' -w)
 
 # GitHub API token for claude code cli running in container
-export GITHUB_TOKEN=$(security find-generic-password -s 'GitHub API token for Claude' -w)
+# export GITHUB_TOKEN=$(security find-generic-password -s 'GitHub API token for Claude' -w)
 
 # Claude Console API token for claude code cli running in container
 # export ANTHROPIC_API_KEY=$(security find-generic-password -s 'Claude Console API Key - A' -w)
