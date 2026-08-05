@@ -35,5 +35,6 @@ export GITHUB_TOKEN=$(security find-generic-password -s 'GitHub API token for Cl
 
 # Claude Console API token for claude code cli running in container
 # export ANTHROPIC_API_KEY=$(security find-generic-password -s 'Claude Console API Key - A' -w)
+export ANTHROPIC_API_KEY=""
 
 
