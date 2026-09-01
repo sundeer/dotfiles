@@ -11,3 +11,5 @@
 	format = ssh
 [diff]
     tool = kaleidoscope
+[core]
+    autocrlf = input
