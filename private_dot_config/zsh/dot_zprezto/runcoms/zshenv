@@ -10,28 +10,39 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+
 ### pyenv
 [[ -d $XDG_DATA_HOME/pyenv ]] && export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+
+# use original upstream source URLs
+export PYTHON_BUILD_SKIP_MIRROR=1
+
 
 ### zoxide
 [[ -d $XDG_DATA_HOME ]] && export _ZO_DATA_DIR="$XDG_DATA_HOME/zoxide"
 
+
 ### volta
 [[ -d $XDG_DATA_HOME ]] && export VOLTA_HOME="$XDG_DATA_HOME/volta"
+
 
 ### homebrew
 # Set Brewfile location.
 [[ -d $XDG_CONFIG_HOME ]] && export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 
+
 # Disable VSCode integration.
 export HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
+
 
 ### Anthropic
 # Claude.ai long lived OAuth token for claude code cli running in container
 export CLAUDE_CODE_OAUTH_TOKEN=$(security find-generic-password -s 'Claude Long Lived OAuth Token' -w)
 
+
 # GitHub API token for claude code cli running in container
 export GITHUB_TOKEN=$(security find-generic-password -s 'GitHub API token for Claude' -w)
+
 
 # Claude Console API token for claude code cli running in container
 # export ANTHROPIC_API_KEY=$(security find-generic-password -s 'Claude Console API Key - A' -w)
