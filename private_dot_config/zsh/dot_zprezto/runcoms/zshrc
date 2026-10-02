@@ -12,6 +12,50 @@ fi
 
 # Customize to your needs...
 
+# Function to calculate folde sizes used by Dropbox and their actual versus logical sizes. 
+diskusage() {
+  local dir local_kb full_kb local_h full_h
+
+  # Convert KiB to a readable size
+  _du_human() {
+    awk -v kb="$1" 'BEGIN {
+      if (kb >= 1073741824)
+        printf "%.2f TB", kb / 1073741824
+      else if (kb >= 1048576)
+        printf "%.2f GB", kb / 1048576
+      else if (kb >= 1024)
+        printf "%.2f MB", kb / 1024
+      else
+        printf "%.2f KB", kb
+    }'
+  }
+
+  printf "%-45s %14s %16s\n" "Folder" "Local Used" "Fully Synced"
+  printf "%-45s %14s %16s\n" \
+    "---------------------------------------------" \
+    "--------------" \
+    "----------------"
+
+  # Zsh:
+  #   N = allow no matches
+  #   D = include hidden directories
+  #   / = directories only
+  for dir in *(ND/); do
+    local_kb=$(du -sk "$dir" 2>/dev/null | awk '{print $1}')
+    full_kb=$(du -Ask "$dir" 2>/dev/null | awk '{print $1}')
+
+    local_h=$(_du_human "$local_kb")
+    full_h=$(_du_human "$full_kb")
+
+    printf "%-45s %14s %16s\n" \
+      "${dir%/}" \
+      "$local_h" \
+      "$full_h"
+  done
+
+  unfunction _du_human
+}
+
 
 ### Starship promt
 eval "$(starship init zsh)"
