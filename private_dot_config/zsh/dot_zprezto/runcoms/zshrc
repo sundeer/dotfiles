@@ -15,8 +15,9 @@ fi
 # Function to calculate folde sizes used by Dropbox and their actual versus logical sizes. 
 diskusage() {
   local dir local_kb full_kb local_h full_h
+  local -i total_local_kb=0
+  local -i total_full_kb=0
 
-  # Convert KiB to a readable size
   _du_human() {
     awk -v kb="$1" 'BEGIN {
       if (kb >= 1073741824)
@@ -36,13 +37,12 @@ diskusage() {
     "--------------" \
     "----------------"
 
-  # Zsh:
-  #   N = allow no matches
-  #   D = include hidden directories
-  #   / = directories only
   for dir in *(ND/); do
     local_kb=$(du -sk "$dir" 2>/dev/null | awk '{print $1}')
     full_kb=$(du -Ask "$dir" 2>/dev/null | awk '{print $1}')
+
+    (( total_local_kb += local_kb ))
+    (( total_full_kb += full_kb ))
 
     local_h=$(_du_human "$local_kb")
     full_h=$(_du_human "$full_kb")
@@ -52,6 +52,16 @@ diskusage() {
       "$local_h" \
       "$full_h"
   done
+
+  printf "%-45s %14s %16s\n" \
+    "---------------------------------------------" \
+    "--------------" \
+    "----------------"
+
+  printf "%-45s %14s %16s\n" \
+    "TOTAL" \
+    "$(_du_human "$total_local_kb")" \
+    "$(_du_human "$total_full_kb")"
 
   unfunction _du_human
 }
