@@ -70,6 +70,7 @@ path=(
   $VOLTA_HOME/bin
 
   /usr/local/{,s}bin(N)
+
   $path
 )
 
