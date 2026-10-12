@@ -60,14 +60,14 @@ path=(
   # parallel can cause all kinds of trouble.
   /opt/homebrew/opt/openjdk/bin
 
+  # Homebrew
+  /opt/{homebrew,local}/{,s}bin(N)
+
   # Pipx
   $HOME/.local/bin
 
   # Volta
   $VOLTA_HOME/bin
-
-  # Homebrew
-  /opt/{homebrew,local}/{,s}bin(N)
 
   /usr/local/{,s}bin(N)
   $path
