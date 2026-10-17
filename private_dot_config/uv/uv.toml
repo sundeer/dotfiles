@@ -1,2 +1,2 @@
-python-preference = "only-system"
-python-downloads = "never"
+python-preference = "only-managed"
+python-downloads = "automatic"
