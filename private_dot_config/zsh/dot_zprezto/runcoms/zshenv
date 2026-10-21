@@ -32,6 +32,7 @@ export HOMEBREW_BUNDLE_DUMP_NO_VSCODE="true"
 # Claude.ai long lived OAuth token for claude code cli running in container
 export CLAUDE_CODE_OAUTH_TOKEN=$(security find-generic-password -s 'Claude Long Lived OAuth Token' -w)
 
+echo "$(date '+%T') pid=$$ parent=$(ps -o comm= -p $PPID)" >> /tmp/keychain-reads.log
 # 1Password service token for Dev service account
 export OP_SERVICE_ACCOUNT_TOKEN=$(security find-generic-password -s '1Password Service Account - Dev' -w)
 
