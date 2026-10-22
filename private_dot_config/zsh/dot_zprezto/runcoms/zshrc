@@ -12,7 +12,12 @@ fi
 
 # Customize to your needs...
 
-# Function to calculate folde sizes used by Dropbox and their actual versus logical sizes. 
+# Wrapper function to run Docker Sandbox sbx with the 1Password service account token for the Dev service account. 
+sbx() {
+  OP_SERVICE_ACCOUNT_TOKEN="$(security find-generic-password -s '1Password Service Account - Dev' -w)" command sbx "$@"
+}
+
+# Function to calculate folder sizes used by Dropbox and their actual versus logical sizes. 
 diskusage() {
   local dir local_kb full_kb local_h full_h
   local -i total_local_kb=0
